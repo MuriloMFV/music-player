@@ -55,9 +55,9 @@ const tracks = [
   },
   {
     name: "Sade - Kiss of Life (1988) ",
-    src: "./tracks/Kiss of Life - sade.mp3",
+    src: "./tracks/Kiss of Life - Sade.mp3",
     cover: "./covers/Cover of Kiss of Life by Sade.jpg",
-    background: "./background/fundo(10).jpg"
+    background: "./background/fundo(10).jpeg"
   }
  
 ];
