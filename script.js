@@ -5,17 +5,12 @@ const tracks = [
     cover: "./covers/australian.jpg",
     background: "./background/fundo (1).jpg"
   },
-  { 
-    name: "Cidade Negra - Luta De Classes (1994)", 
-    src: "./tracks/Luta De Classes.mp3", 
-    cover: "./covers/cidade-negra.jpg",
-    background: "./background/fundo (2).jpg"
-  },
-  { 
-    name: "Bread - Everything I Own (1972)", 
-    src: "./tracks/Track 03.mp3", 
-    cover: "./covers/bread-baby-im-a-want-you.jpg",
-    background: "./background/fundo (3).jpg"
+  
+  {
+    name: "Black Eyed Peas - Meet Me Halfway (2009)",
+    src: "./tracks/Meet Me Halfway - Black Eyed Peas.mp3",
+    cover: "./covers/Cover of Meet Me Halfway by Black Eyed Peas.jpg",
+    background: "./background/undefined - Imgur.gif"
   },
   {
     name: "Bob Marley - Could You Be Loved (1980)",
@@ -28,6 +23,13 @@ const tracks = [
     src: "./tracks/Rapp Snitch Knishes - MF DOOM (youtube).mp3",
     cover: "./covers/mfdoom.jpeg",
     background: "./background/fundo(5).jpg"
+  },
+  {
+    name: "Daft Punk (feat. Pharrell Williams and Nile Rodgers) - Get Lucky (2014)",
+    src: "./tracks/Get Lucky (feat. Pharrell Williams and Nile Rodgers) - Daft Punk.mp3",
+    cover: "./covers/Cover of Get Lucky (feat. Pharrell Williams and Nile Rodgers) by Daft Punk, Pharrell Williams, Nile Rodgers.jpg",
+    background: "./background/undefined - Imgur(2).gif"
+  
   },
   {
     name: "Zé Ramalho - Chão de Giz (1977)",
@@ -48,17 +50,31 @@ const tracks = [
     background: "./background/fundo(8).jpg"
   },
   {
-    name: "Black Eyed Peas - Meet Me Halfway (2009)",
-    src: "./tracks/Meet Me Halfway - Black Eyed Peas.mp3",
-    cover: "./covers/Cover of Meet Me Halfway by Black Eyed Peas.jpg",
-    background: "./background/fundo(9).jpg"
-  },
-  {
     name: "Sade - Kiss of Life (1988) ",
     src: "./tracks/Kiss of Life - Sade.mp3",
     cover: "./covers/Cover of Kiss of Life by Sade.jpg",
     background: "./background/fundo(10).jpeg"
+  },
+  {
+    name: "MGMT - Kids (2005)",
+    src: "./tracks/Kids - MGMT.mp3",
+    cover: "./covers/mgmt.jpg",
+    background: "./background/undefined - Imgur(3).gif"
+  
+  },
+  { 
+    name: "Cidade Negra - Luta De Classes (1994)", 
+    src: "./tracks/Luta De Classes.mp3", 
+    cover: "./covers/cidade-negra.jpg",
+    background: "./background/fundo (2).jpg"
+  },
+  { 
+    name: "Bread - Everything I Own (1972)", 
+    src: "./tracks/Track 03.mp3", 
+    cover: "./covers/bread-baby-im-a-want-you.jpg",
+    background: "./background/fundo (3).jpg"
   }
+  
  
 ];
 
