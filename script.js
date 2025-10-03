@@ -15,44 +15,44 @@ const tracks = [
   {
     name: "Bob Marley - Could You Be Loved (1980)",
     src: "./tracks/Could You Be Loved.mp3",
-    cover: "./covers/bobmarley.jpeg",
+    cover: "./covers/bobmarley.jpg",
     background: "./background/fundo(4).jpg"
   },
   {
     name: "MF DOOM feat. Mr. Fantastik - Rapp Snitch Knishes (2004)",
     src: "./tracks/Rapp Snitch Knishes - MF DOOM (youtube).mp3",
-    cover: "./covers/mfdoom.jpeg",
+    cover: "./covers/mfdoom.jpg",
     background: "./background/fundo(5).jpg"
   },
   {
     name: "Daft Punk (feat. Pharrell Williams and Nile Rodgers) - Get Lucky (2014)",
     src: "./tracks/Get Lucky (feat. Pharrell Williams and Nile Rodgers) - Daft Punk.mp3",
-    cover: "./covers/Cover of Get Lucky (feat. Pharrell Williams and Nile Rodgers) by Daft Punk, Pharrell Williams, Nile Rodgers.jpg",
+    cover: "./covers/daftpunk.jpg",
     background: "./background/undefined - Imgur(2).gif"
   
   },
   {
     name: "Zé Ramalho - Chão de Giz (1977)",
     src: "./tracks/CHAO DE GIZ.mp3",
-    cover: "./covers/zc3a9.jpg",
+    cover: "./covers/zeramalho.jpg",
     background: "./background/fundo(6).jpg"
   },
   {
     name: "The Cranberries - Linger (1993)",
     src: "./tracks/Cranberries - Linger .mp3",
-    cover: "./covers/thecranberries.webp",
+    cover: "./covers/thecranrries.jpg",
     background: "./background/fundo(7).webp"
   },
   {
     name: "No Doubt - Just a Girl (1995)",
     src: "./tracks/Just A Girl - No Doubt.mp3",
-    cover: "./covers/Cover of Don't Speak by No Doubt.jpg",
+    cover: "./covers/nodoubt.jpg",
     background: "./background/fundo(8).jpg"
   },
   {
     name: "Sade - Kiss of Life (1988) ",
     src: "./tracks/Kiss of Life - Sade.mp3",
-    cover: "./covers/Cover of Kiss of Life by Sade.jpg",
+    cover: "./covers/sade.jpg",
     background: "./background/fundo(10).jpeg"
   },
   {
@@ -65,13 +65,13 @@ const tracks = [
   { 
     name: "Cidade Negra - Luta De Classes (1994)", 
     src: "./tracks/Luta De Classes.mp3", 
-    cover: "./covers/cidade-negra.jpg",
+    cover: "./covers/cidadenegra.jpg",
     background: "./background/fundo (2).jpg"
   },
   { 
     name: "Bread - Everything I Own (1972)", 
     src: "./tracks/Track 03.mp3", 
-    cover: "./covers/bread-baby-im-a-want-you.jpg",
+    cover: "./covers/bread.jpg",
     background: "./background/fundo (3).jpg"
   }
   
