@@ -59,6 +59,7 @@ Todas as capas de álbum foram meticulosamente criadas no Canva, trazendo uma id
 - [ ] **Mais animações retrô personalizáveis**
 - [ ] **Temas visuais alternativos**
 - [ ] **Sistema de playlists customizáveis**
+- [ ] **Controle de Volume**
 
 ## 🛠️ Tecnologias Utilizadas
 
