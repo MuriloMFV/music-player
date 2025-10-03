@@ -40,6 +40,24 @@ const tracks = [
     src: "./tracks/Cranberries - Linger .mp3",
     cover: "./covers/thecranberries.webp",
     background: "./background/fundo(7).webp"
+  },
+  {
+    name: "No Doubt - Just a Girl (1995)",
+    src: "./tracks/Just A Girl - No Doubt.mp3",
+    cover: "./covers/Cover of Don't Speak by No Doubt.jpg",
+    background: "./background/fundo(8).jpg"
+  },
+  {
+    name: "Black Eyed Peas - Meet Me Halfway (2009)",
+    src: "./tracks/Meet Me Halfway - Black Eyed Peas.mp3",
+    cover: "./covers/Cover of Meet Me Halfway by Black Eyed Peas.jpg",
+    background: "./background/fundo(9).jpg"
+  },
+  {
+    name: "Sade - Kiss of Life (1988) ",
+    src: "./tracks/Kiss of Life - sade.mp3",
+    cover: "./covers/Cover of Kiss of Life by Sade.jpg",
+    background: "./background/fundo(10).jpg"
   }
  
 ];
