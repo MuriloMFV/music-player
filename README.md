@@ -28,7 +28,15 @@ O player vem com uma seleção cuidadosa de 12 músicas que atravessam décadas 
 9. **Sade** - Kiss of Life (1988)
 10. **MGMT** - Kids (2005)
 11. **Cidade Negra** - Luta De Classes (1994)
-12. **Bread** - Everything I Own (1972)
+12. **Ziggy Marley and the Melody Makers** - Tomorrow People (1988)
+13. **Joy Division** - Disorder (1979)
+14. **Bread** - Everything I Own (1972)
+15. **Chico Science** - Da Lama ao Caos (1994)
+16. **Ween** - Ocean Man (1997)
+17. **Sublime** - Santeria (1996)
+18. **Simple Minds** - Mandela Day (1989)
+19. **David Bowie** - Starman (1973)
+20. **Engenheiros de Hawaii** - Infinita Highway (1987)
 
 ## 🚀 Acesse Agora
 

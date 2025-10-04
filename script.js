@@ -68,12 +68,61 @@ const tracks = [
     cover: "./covers/cidadenegra.jpg",
     background: "./background/fundo (2).jpg"
   },
+  {
+    name: "Joy Division - Disorder (1979)",
+    src: "./tracks/Joy Division.mp3", 
+    cover: "./covers/joydivision.jpg",
+    background: "./background/undefined - Imgur(5).gif"
+  },
+  {
+    name: "Ziggy Marley and the Melody Makers - Tomorrow People (1988)",
+    src: "./tracks/Tomorrow People.mp3", 
+    cover: "./covers/ziggy.jpg",
+    background: "./background/undefined - Imgur(4).gif"
+  },
   { 
     name: "Bread - Everything I Own (1972)", 
     src: "./tracks/Track 03.mp3", 
     cover: "./covers/bread.jpg",
     background: "./background/fundo (3).jpg"
+  },
+  {
+    name: "Chico Science - Da Lama ao Caos (1994)",
+    src: "./tracks/Da Lama ao Caos - Chico Science.mp3", 
+    cover: "./covers/chico.jpg",
+    background: "./background/fundo (10).jpg"
+  },
+  {
+    name: "Ween - Ocean Man (1997)",
+    src: "./tracks/Ocean Man - Ween.mp3", 
+    cover: "./covers/ocean.jpg",
+    background: "./background/undefined - Imgur(7).gif"
+  },
+  {
+    name: "Sublime - Santeria (1996)",
+    src: "./tracks/Santeria - Sublime.mp3", 
+    cover: "./covers/sublime.jpg",
+    background: "./background/fundo(11).jpg"
+  },
+  {
+    name: "Simple Minds - Mandela Day (1989) ",
+    src: "./tracks/Simple Minds.mp3", 
+    cover: "./covers/mandela.jpg",
+    background: "./background/fundo(9).jpg"
+  },
+  {
+    name: "David Bowie - Starman (1973)",
+    src: "./tracks/David Bowie.mp3", 
+    cover: "./covers/bowie.jpg",
+    background: "./background/undefined - Imgur(6).gif"
+  },
+  {
+    name: "Engenheiros de Hawaii - Infinita Highway (1987)",
+    src: "./tracks/Infinita Highway - Engenheiros Do Hawaii.mp3", 
+    cover: "./covers/engenheiros.jpg",
+    background: "./background/undefined - Imgur(8).gif"
   }
+
   
  
 ];
