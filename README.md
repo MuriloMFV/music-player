@@ -1,21 +1,20 @@
 # README - Liquid Glass Music Player
 
-## 🎵 SOBRE:
+##  SOBRE:
 
-Um player web que combina a pegada do Winamp com design contemporâneo Liquid Glass, criando uma experiência visual com elementos retro e animações fluidas.
+A ideia principal é ser um player web que combina a pegada do Winamp com design contemporâneo Liquid Glass,sendo uma experiência visual com elementos bonitos e animações fluidas.
 
 
-## ✨ Características Destacadas
+## O que eu Destaco
 
 - **Design Liquid Glass**: Efeito glassmorphism aprimorado com animações fluidas e transições suaves
-- **Capes Personalizadas**: Design exclusivo de CDs criado no Canva para cada álbum
-- **Background Dinâmico**: Fundo que se transforma conforme a música, criando imersão total
-- **Animações: Elementos visuais que remetem aos players clássicos com toque moderno
+- **Capes Personalizadas**: Design exclusivo de CDs criado no Canva por mim para cada álbum
+- **Background Dinâmico**: Fundo que se transforma conforme a música por meio de JavaScript, criando imersão
 - **Playlist Interativa**: Navegação intuitiva com feedback visual 
 
-## 🎼 Acervo 
+##  Acervo 
 
-O player vem com uma seleção cuidadosa de 12 músicas que atravessam décadas e estilos:
+O player vem com um padrão de 12 músicas:
 
 1. **Australian Crawl** - No Not You Again (1981)
 2. **Black Eyed Peas** - Meet Me Halfway (2009) 
@@ -38,29 +37,24 @@ O player vem com uma seleção cuidadosa de 12 músicas que atravessam décadas 
 19. **David Bowie** - Starman (1973)
 20. **Engenheiros de Hawaii** - Infinita Highway (1987)
 
-## 🚀 Acesse Agora
+-- todas armazenadas localmente
+
+
 
 **Link Oficial:** 🌐 [https://murilomfv.github.io/music-player/](https://murilomfv.github.io/music-player/)
 
-## 🎨 Design Exclusivo
+## Detalhes do Design:
 
 ### Capas Customizadas
-Todas as capas de álbum foram meticulosamente criadas no Canva, trazendo uma identidade visual única e coerente para cada música. O design dos CDs segue uma estética que mescla elementos retro com tendências modernas.
+Todas as capas de álbum foram meticulosamente criadas no Canva, acho que a capa sendo uma simulação de um cd lacrado traz mais identidade e faz com que o usuário tenha identificação visual
 
 ### Evolução do Conceito
 - **Ideia Original**: Player estilo Winamp clássico
 - **Conceito Final**: Fusão entre Winamp e design liquid glass moderno da Apple
 - **Elementos Preservados**: Animações características e pegada visual dos players antigos
 
-## 🎮 Como Usar
 
-1. **Acesse** o link oficial acima
-2. **Navegue** pela playlist clicando nas músicas
-3. **Controle** a reprodução com os botões intuitivos
-4. **Ajuste** o progresso clicando na barra de tempo
-5. **Deixe-se levar** pela experiência visual sincronizada com o áudio
-
-## 🔮 Próximas Atualizações
+##  Próximas Atualizações
 
 - [ ] **Sistema de Biblioteca com Back-end**
 - [ ] **Upload de arquivos MP3 pessoais**
@@ -72,7 +66,7 @@ Todas as capas de álbum foram meticulosamente criadas no Canva, trazendo uma id
 ## 🛠️ Tecnologias Utilizadas
 
 - **HTML5** + **CSS3** com efeitos Glassmorphism
-- **JavaScript** para interatividade avançada
+- **JavaScript** para lógica e funções 
 - **Web Audio API** para controle de áudio
 - **Animações CSS** com keyframes fluidas
 - **Design Responsivo** para todos os dispositivos
@@ -112,7 +106,7 @@ music-player/
 
 ## 📄 Status do Projeto
 
-**🎯 Em Desenvolvimento Ativo** - Novas features sendo implementadas regularmente!
+**Em Desenvolvimento Ativo** - Novas features sendo implementadas regularmente!
 
 ---
 
