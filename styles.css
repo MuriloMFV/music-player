@@ -20,6 +20,7 @@ body {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease forwards;
+  margin-left: 67px;
 }
 
 @keyframes fadeInUp {
@@ -223,3 +224,83 @@ button:active {
   background: rgba(255,255,255,0.6);
   color: #000;
 }
+
+/* Fundo suave e limpo */
+body {
+  background: linear-gradient(135deg, #1a1f29, #2c3443);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+}
+
+
+
+
+
+/* Container centralizado */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  
+}
+
+/* Barra de pesquisa estilo vidro líquido */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+  height: 52px;
+  padding: 0 18px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25),
+              inset 0 1px 8px rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Interações suaves */
+.search-bar:hover {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(25px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35),
+              inset 0 1px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Ícone de busca */
+.icon {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.85);
+  user-select: none;
+}
+
+/* Campo de input */
+.search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Placeholder sutil */
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Foco com brilho leve */
+.search-bar input:focus + .icon,
+.search-bar:focus-within {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+}
+
