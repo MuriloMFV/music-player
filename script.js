@@ -219,3 +219,39 @@ tracks.forEach((track, index) => {
 });
 
 loadTrack(currentTrack);
+
+const searchInput = document.getElementById("search");
+
+searchInput.addEventListener("input", () => {
+  const filter = searchInput.value.toLowerCase();
+  const trackElements = document.querySelectorAll(".track");
+
+  trackElements.forEach(trackEl => {
+    const text = trackEl.textContent.toLowerCase();
+    // se o nome da música inclui o texto digitado, mostra; senão, esconde
+    trackEl.style.display = text.includes(filter) ? "block" : "none";
+  });
+});
+
+const noResults = document.createElement("div");
+noResults.textContent = "Nenhuma música encontrada";
+noResults.style.display = "none";
+noResults.classList.add("no-results");
+playlist.appendChild(noResults);
+
+searchInput.addEventListener("input", () => {
+  const filter = searchInput.value.toLowerCase();
+  const trackElements = document.querySelectorAll(".track");
+  let anyVisible = false;
+
+  trackElements.forEach(trackEl => {
+    const text = trackEl.textContent.toLowerCase();
+    const visible = text.includes(filter);
+    trackEl.style.display = visible ? "block" : "none";
+    if (visible) anyVisible = true;
+  });
+
+  noResults.style.display = anyVisible ? "none" : "block";
+});
+
+
