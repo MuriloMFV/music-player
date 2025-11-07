@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap');
+
 body {
+  font-family: "Stack Sans Text", sans-serif;
   background: #111;
-  font-family: "Alan Sans", sans-serif;
   color: rgb(228, 238, 228);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
+  
+  
 }
 
 .player {
@@ -233,7 +237,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Inter", sans-serif;
+  font-family: "Stack Sans Text", sans-serif;
   margin: 0;
 }
 
