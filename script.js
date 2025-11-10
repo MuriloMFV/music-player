@@ -284,13 +284,24 @@ const closeModal = document.querySelector(".close");
 
 // curiosidades sobre músicas/artistas
 const curiosidades = {
+  "Australian Crawl": "‘No Not You Again’ foi inspirada em um encontro desconfortável do vocalista James Reyne com uma fã insistente.",
+  "Black Eyed Peas": "‘Meet Me Halfway’ foi escrita para ser uma balada futurista, combinando elementos de pop e R&B com produção eletrônica.",
   "Bob Marley": "“Could You Be Loved” foi uma das músicas mais populares de Marley, escrita em uma turnê de avião com sua banda The Wailers.",
   "MF DOOM feat. Mr. Fantastik": "MF DOOM era conhecido por usar uma máscara inspirada no vilão Doutor Destino e letras cheias de trocadilhos e referências obscuras.",
   "Daft Punk (feat. Pharrell Williams and Nile Rodgers)": "“Get Lucky” foi um marco do disco Random Access Memories, com participação de Pharrell e Nile Rodgers — uma homenagem à era disco.",
+  "No Doubt": "foi inspirada nas experiências pessoais de Gwen Stefani com pais rigorosos e nas frustrações de ser mulher em uma sociedade que impõe restrições. A letra surgiu quando a cantora foi impedida de sair de carro tarde da noite por ser mulher, uma situação que a fez refletir sobre a vulnerabilidade e o tratamento desigual que as mulheres enfrentam. O tom sarcástico da música critica estereótipos de fragilidade e impotência, tornando-a um hino feminista. ",
+  "MGMT": "“Kids” foi escrita quando Andrew VanWyngarden e Ben Goldwasser ainda estavam na faculdade, refletindo sobre a inocência perdida da infância.",
   "Sade": "‘Kiss of Life’ é uma das canções mais sensuais do álbum ‘Love Deluxe’, conhecido pela suavidade da voz de Sade Adu.",
   "Zé Ramalho": "“Chão de Giz” foi escrita em um momento de ruptura amorosa, e é considerada uma das músicas mais poéticas da MPB.",
   "David Bowie": "“Starman” marcou o nascimento do personagem Ziggy Stardust, o alter ego alienígena de Bowie.",
   "Cidade Negra": "“Luta de Classes” traz uma mensagem forte sobre desigualdade social, unindo reggae e crítica social.",
+  "Bread": "“Everything I Own” foi escrita por David Gates como uma homenagem ao seu pai, expressando amor e gratidão.",
+  "Joy Division": "‘Disorder’ foi uma das primeiras músicas escritas pela banda, refletindo a ansiedade e alienação sentidas pelos membros na época.",
+  "Ziggy Marley and the Melody Makers": "‘Tomorrow People’ fala sobre esperança e mudança, temas recorrentes nas músicas de Ziggy Marley.",
+  "Chico Science": "‘Da Lama ao Caos’ é um marco do movimento manguebeat, misturando ritmos tradicionais brasileiros com rock e hip-hop.",
+  "Ween": "‘Ocean Man’ ganhou popularidade após ser incluída na trilha sonora do filme ‘Bob Esponja: O Filme’.",
+  "Sublime": "‘Santeria’ é uma das músicas mais conhecidas da banda, combinando reggae, ska e punk rock.",
+  "Simple Minds": "‘Mandela Day’ foi escrita em homenagem a Nelson Mandela e sua luta contra o apartheid na África do Sul.",
   "The Cranberries": "“Linger” foi escrita por Dolores O’Riordan aos 17 anos e fala sobre a dor da primeira desilusão amorosa.",
   "Engenheiros de Hawaii": "“Infinita Highway” usa a estrada como metáfora para a jornada da vida, um dos maiores hits da banda."
 };
