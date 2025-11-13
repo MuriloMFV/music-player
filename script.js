@@ -170,6 +170,7 @@ function loadTrack(index) {
   setTimeout(() => {
     bgImg.src = tracks[index].background;
     cover.src = tracks[index].cover;
+    document.getElementById("cd-hover").src = tracks[index].disk;
 
     bgImg.onload = () => bgImg.style.opacity = 1;
     cover.onload = () => cover.style.opacity = 1;
