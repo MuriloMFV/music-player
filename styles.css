@@ -420,6 +420,15 @@ body {
   margin-bottom: 10px;
 }
 
+.cd-info h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 15px;
+  font-style: italic;
+  
+}
+
 .cd-info p {
   font-size: 14px;
   color: rgba(255,255,255,0.85);
