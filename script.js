@@ -208,6 +208,12 @@ function pauseTrack() {
   audio.pause();
 }
 
+function nextTrack() {
+  currentTrack = (currentTrack + 1) % tracks.length;
+  loadTrack(currentTrack);
+  playTrack();
+}
+
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
@@ -224,6 +230,11 @@ audio.addEventListener("timeupdate", () => {
     durationEl.textContent = formatTime(duration);
   }
 });
+
+audio.addEventListener("ended", () => {
+  nextTrack();
+});
+
 
 progressContainer.addEventListener("click", (e) => {
   const width = progressContainer.clientWidth;
@@ -245,7 +256,10 @@ document.getElementById("next").addEventListener("click", () => {
   currentTrack = (currentTrack + 1) % tracks.length;
   loadTrack(currentTrack);
   playTrack();
+  
 });
+
+
 
 tracks.forEach((track, index) => {
   const div = document.createElement("div");
