@@ -41,7 +41,7 @@ O player vem com um padrão de 12 músicas:
 
 
 
-**Link Oficial:** 🌐 [https://murilomfv.github.io/music-player/](https://murilomfv.github.io/music-player/)
+**Link Oficial:** [https://murilomfv.github.io/music-player/](https://murilomfv.github.io/music-player/)
 
 ## Detalhes do Design:
 
@@ -63,7 +63,7 @@ Todas as capas de álbum foram meticulosamente criadas no Canva, acho que a capa
 - [ ] **Sistema de playlists customizáveis**
 - [ ] **Controle de Volume**
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **HTML5** + **CSS3** com efeitos Glassmorphism
 - **JavaScript** para lógica e funções 
@@ -71,7 +71,7 @@ Todas as capas de álbum foram meticulosamente criadas no Canva, acho que a capa
 - **Animações CSS** com keyframes fluidas
 - **Design Responsivo** para todos os dispositivos
 
-## 📁 Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```
 music-player/
@@ -92,19 +92,11 @@ music-player/
 {
   name: "Sua Música - Artista (Ano)",
   src: "./tracks/sua-musica.mp3",
-  cover: "./covers/sua-capa.jpg",    // Pode criar no Canva!
+  cover: "./covers/sua-capa.jpg",    
   background: "./background/seu-fundo.jpg"
 }
 ```
 
-## 🌐 Compatibilidade
-
-- ✅ **Chrome, Firefox, Safari, Edge** (modernos)
-- ✅ **Desktop e Mobile** responsivo
-- ✅ **Funcionamento Offline** após carregamento
-- ✅ **Performance otimizada** para áudio e animações
-
-## 📄 Status do Projeto
 
 **Em Desenvolvimento Ativo** - Novas features sendo implementadas regularmente!
 

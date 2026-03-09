@@ -310,7 +310,7 @@ searchInput.addEventListener("input", () => {
 });
 
 
-// === MODAL DO CD ===
+// MODAL DO CD
 const modal = document.getElementById("cd-modal");
 const modalImg = document.getElementById("cd-image");
 const modalTitle = document.getElementById("cd-title");
