@@ -449,3 +449,263 @@ body {
 }
 
 
+/* =============================================
+   SPOTIFY INTEGRATION — adicione ao styles.css
+   ============================================= */
+
+/* Botão flutuante para abrir o painel Spotify */
+#spotify-toggle-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(145deg, rgba(29, 185, 84, 0.5), rgba(29, 185, 84, 0.15));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(29, 185, 84, 0.35),
+              inset 1px 1px 4px rgba(255, 255, 255, 0.3);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#spotify-toggle-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(145deg, rgba(29, 185, 84, 0.75), rgba(29, 185, 84, 0.3));
+  box-shadow: 0 0 30px rgba(29, 185, 84, 0.6),
+              inset 1px 1px 6px rgba(255, 255, 255, 0.4);
+}
+
+#spotify-toggle-btn:active {
+  transform: scale(0.93);
+}
+
+/* Painel de busca Spotify */
+#spotify-panel {
+  position: fixed;
+  bottom: 92px;
+  right: 28px;
+  width: 340px;
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 18px;
+  z-index: 99;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  /* Fechado: escondido */
+  opacity: 0;
+  transform: translateY(16px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#spotify-panel.sp-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+/* Cabeçalho do painel */
+.sp-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.sp-logo {
+  font-size: 20px;
+}
+
+.sp-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.sp-header small {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-left: auto;
+}
+
+/* Campo de busca */
+.sp-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 8px 14px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+}
+
+.sp-search-wrap:focus-within {
+  border-color: rgba(29, 185, 84, 0.6);
+  background: rgba(29, 185, 84, 0.06);
+}
+
+.sp-search-icon {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+#spotify-search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  width: 100%;
+  font-family: "Stack Sans Text", sans-serif;
+}
+
+#spotify-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Lista de resultados */
+#spotify-results {
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+#spotify-results::-webkit-scrollbar { display: none; }
+
+/* Item de resultado */
+.sp-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: default;
+  transition: background 0.2s;
+}
+
+.sp-track:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.sp-art {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.sp-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sp-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sp-artist {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sp-album {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botão de play no resultado */
+.sp-play-btn {
+  flex-shrink: 0;
+  background: linear-gradient(145deg, rgba(29, 185, 84, 0.5), rgba(29, 185, 84, 0.2));
+  border: 1px solid rgba(29, 185, 84, 0.5);
+  color: #fff;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
+  box-shadow: none;
+}
+
+.sp-play-btn:hover {
+  background: rgba(29, 185, 84, 0.7);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(29, 185, 84, 0.5);
+}
+
+/* Sem prévia disponível */
+.sp-no-preview { opacity: 0.45; }
+.sp-disabled {
+  background: rgba(255,255,255,0.05) !important;
+  border-color: rgba(255,255,255,0.1) !important;
+  cursor: not-allowed !important;
+}
+.sp-disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Loading e empty state */
+.sp-loading,
+.sp-empty {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 20px 0;
+}
+
+.sp-dots {
+  display: inline-block;
+  animation: sp-blink 1.2s infinite;
+}
+
+@keyframes sp-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Aviso de preview */
+.sp-footer {
+  margin-top: 10px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.28);
+  text-align: center;
+  letter-spacing: 0.02em;
+}

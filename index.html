@@ -9,6 +9,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
+<!-- Botão Spotify -->
+<button id="spotify-toggle-btn" onclick="toggleSpotifyPanel()">🎵</button>
+
+<!-- Painel de busca Spotify -->
+<div id="spotify-panel">
+  <div class="sp-header">
+    <span class="sp-logo">🟢</span>
+    <h4>Buscar no Spotify</h4>
+    <small>prévia · 30s</small>
+  </div>
+  <div class="sp-search-wrap">
+    <span class="sp-search-icon">🔍</span>
+    <input id="spotify-search-input" type="text" placeholder="Artista, música, álbum...">
+  </div>
+  <div id="spotify-results"></div>
+  <div class="sp-footer">Prévias de 30s via Spotify API</div>
+</div>
+
+<script src="spotify.js"></script>  <!-- depois do script.js -->
 <body>
 
 <div class="background">
