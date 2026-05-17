@@ -5,8 +5,7 @@
 // 2. Copie seu Client ID e Client Secret abaixo
 // 3. Adicione <script src="spotify.js"></script> no seu HTML (antes do </body>)
 
-const SPOTIFY_CLIENT_ID     = "378c79139eea40a8b583fffc7ae1dec1";
-const SPOTIFY_CLIENT_SECRET = "da2f01d91e2f46b8be3e9eec77793053";
+
 
 let spotifyToken = null;
 let tokenExpiry  = 0;
