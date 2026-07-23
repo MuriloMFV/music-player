@@ -1,214 +1,172 @@
 // =============================================
-// SPOTIFY INTEGRATION — Preview de 30s (FRONT ONLY)
-// =============================================
-// ⚠️ IMPORTANTE:
-// 1. Crie um app em: https://developer.spotify.com/dashboard
-// 2. Coloque seu CLIENT ID abaixo
-// 3. Configure o Redirect URI no Spotify (EX: http://localhost:5500)
+// SPOTIFY FRONTEND ONLY (PKCE)
 // =============================================
 
-// 🔑 CONFIG
 const SPOTIFY_CLIENT_ID = "378c79139eea40a8b583fffc7ae1dec1";
 const REDIRECT_URI = window.location.origin + window.location.pathname;
 
-// 🔐 TOKEN
 let spotifyToken = null;
-let tokenExpiry  = 0;
 
-// ─── LOGIN SPOTIFY ───────────────────────────────────────────────────────────
+// ─── HELPERS PKCE ─────────────────────────────
 
-function loginSpotify() {
-  const scopes = ""; // não precisa de permissões
-
-  const url = `https://accounts.spotify.com/authorize?` +
-    `client_id=${SPOTIFY_CLIENT_ID}` +
-    `&response_type=token` +
-    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
-    `&scope=${scopes}`;
-
-  window.location.href = url;
+function generateRandomString(length) {
+  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  return Array.from(crypto.getRandomValues(new Uint8Array(length)))
+    .map(x => possible[x % possible.length])
+    .join("");
 }
 
-// ─── CAPTURA TOKEN DA URL ────────────────────────────────────────────────────
+async function sha256(plain) {
+  const data = new TextEncoder().encode(plain);
+  return crypto.subtle.digest("SHA-256", data);
+}
 
-function getTokenFromUrl() {
-  const hash = window.location.hash.substring(1);
-  const params = new URLSearchParams(hash);
+function base64encode(input) {
+  return btoa(String.fromCharCode(...new Uint8Array(input)))
+    .replace(/=/g, "")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_");
+}
 
-  const accessToken = params.get("access_token");
-  const expiresIn   = params.get("expires_in");
+// ─── LOGIN ────────────────────────────────────
 
-  if (accessToken) {
-    spotifyToken = accessToken;
-    tokenExpiry  = Date.now() + expiresIn * 1000;
+async function loginSpotify() {
+  const codeVerifier = generateRandomString(64);
+  const hashed = await sha256(codeVerifier);
+  const codeChallenge = base64encode(hashed);
 
-    // limpa URL
-    window.history.replaceState({}, document.title, window.location.pathname);
+  localStorage.setItem("code_verifier", codeVerifier);
+
+  const url = new URL("https://accounts.spotify.com/authorize");
+  url.search = new URLSearchParams({
+    client_id: SPOTIFY_CLIENT_ID,
+    response_type: "code",
+    redirect_uri: REDIRECT_URI,
+    code_challenge_method: "S256",
+    code_challenge: codeChallenge
+  });
+
+  window.location.href = url.toString();
+}
+
+// ─── TROCA CODE POR TOKEN ─────────────────────
+
+async function fetchAccessToken(code) {
+  const codeVerifier = localStorage.getItem("code_verifier");
+
+  const body = new URLSearchParams({
+    client_id: SPOTIFY_CLIENT_ID,
+    grant_type: "authorization_code",
+    code: code,
+    redirect_uri: REDIRECT_URI,
+    code_verifier: codeVerifier
+  });
+
+  const res = await fetch("https://accounts.spotify.com/api/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body
+  });
+
+  const data = await res.json();
+
+  if (data.access_token) {
+    spotifyToken = data.access_token;
+    localStorage.setItem("spotify_token", spotifyToken);
   }
 }
 
-// ─── GERENCIA TOKEN ──────────────────────────────────────────────────────────
+// ─── GERENCIA TOKEN ───────────────────────────
 
 async function getSpotifyToken() {
-  if (spotifyToken && Date.now() < tokenExpiry) return spotifyToken;
-
-  getTokenFromUrl();
-
   if (spotifyToken) return spotifyToken;
 
-  // se não tiver token → login
-  loginSpotify();
+  const saved = localStorage.getItem("spotify_token");
+  if (saved) {
+    spotifyToken = saved;
+    return spotifyToken;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+
+  if (code) {
+    await fetchAccessToken(code);
+
+    // limpa URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+    return spotifyToken;
+  }
+
+  await loginSpotify();
 }
 
-// ─── BUSCA DE MÚSICAS ─────────────────────────────────────────────────────────
+// ─── BUSCA ────────────────────────────────────
 
 async function searchSpotify(query) {
   const token = await getSpotifyToken();
 
   const res = await fetch(
-    `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=8&market=BR`,
-    { headers: { Authorization: `Bearer ${token}` } }
+    `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=8`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
   );
-
-  if (!res.ok) throw new Error("Erro na busca do Spotify");
 
   const data = await res.json();
   return data.tracks.items;
 }
 
-// ─── UI: RESULTADOS ──────────────────────────────────────────────────────────
+// ─── UI ───────────────────────────────────────
 
 function renderSpotifyResults(tracks) {
   const container = document.getElementById("spotify-results");
   container.innerHTML = "";
 
-  if (!tracks.length) {
-    container.innerHTML = `<div class="sp-empty">Nenhum resultado encontrado</div>`;
-    return;
-  }
-
   tracks.forEach(track => {
     const hasPreview = !!track.preview_url;
-    const artists    = track.artists.map(a => a.name).join(", ");
-    const albumArt   = track.album.images[1]?.url || track.album.images[0]?.url || "";
+    const artists = track.artists.map(a => a.name).join(", ");
+    const albumArt = track.album.images[0]?.url;
 
     const div = document.createElement("div");
-    div.className = `sp-track ${hasPreview ? "" : "sp-no-preview"}`;
     div.innerHTML = `
-      <img class="sp-art" src="${albumArt}" alt="capa">
-      <div class="sp-info">
-        <span class="sp-name">${track.name}</span>
-        <span class="sp-artist">${artists}</span>
-        <span class="sp-album">${track.album.name} · ${track.album.release_date?.slice(0,4)}</span>
-      </div>
-      <button class="sp-play-btn ${hasPreview ? "" : "sp-disabled"}"
-              title="${hasPreview ? "Tocar prévia de 30s" : "Prévia indisponível"}">
-        ${hasPreview ? "▶ 30s" : "—"}
+      <img src="${albumArt}" width="50">
+      <div>${track.name} - ${artists}</div>
+      <button ${!hasPreview ? "disabled" : ""}>
+        ${hasPreview ? "▶" : "X"}
       </button>
     `;
 
     if (hasPreview) {
-      div.querySelector(".sp-play-btn").addEventListener("click", () => {
-        loadSpotifyPreview(track, albumArt);
-      });
+      div.querySelector("button").onclick = () => {
+        const audio = document.getElementById("audio");
+        audio.src = track.preview_url;
+        audio.play();
+      };
     }
 
     container.appendChild(div);
   });
 }
 
-// ─── PLAYER ──────────────────────────────────────────────────────────────────
+// ─── INIT ─────────────────────────────────────
 
-function loadSpotifyPreview(track, albumArt) {
-  const artists = track.artists.map(a => a.name).join(", ");
+let debounce;
 
-  const audio   = document.getElementById("audio");
-  const display = document.getElementById("display");
-  const cover   = document.getElementById("cover").querySelector("img");
-  const bgImg   = document.getElementById("bg-img");
-  const cdHover = document.getElementById("cd-hover");
-
-  audio.src = track.preview_url;
-  audio.play();
-
-  display.textContent = `${artists} — ${track.name} (prévia Spotify)`;
-
-  cover.style.opacity = 0;
-  bgImg.style.opacity = 0;
-
-  setTimeout(() => {
-    cover.src = albumArt;
-    bgImg.src = albumArt;
-    cdHover.src = albumArt;
-
-    cover.onload = () => cover.style.opacity = 1;
-    bgImg.onload = () => bgImg.style.opacity  = 1;
-  }, 400);
-
-  document.querySelectorAll(".track").forEach(el => el.classList.remove("active"));
-  toggleSpotifyPanel(false);
-}
-
-// ─── PAINEL ──────────────────────────────────────────────────────────────────
-
-function toggleSpotifyPanel(force) {
-  const panel = document.getElementById("spotify-panel");
-  const isOpen = panel.classList.contains("sp-open");
-  const shouldOpen = force !== undefined ? force : !isOpen;
-
-  panel.classList.toggle("sp-open", shouldOpen);
-
-  if (shouldOpen) {
-    document.getElementById("spotify-search-input").focus();
-  } else {
-    document.getElementById("spotify-results").innerHTML = "";
-    document.getElementById("spotify-search-input").value = "";
-  }
-}
-
-// ─── BUSCA (DEBOUNCE) ────────────────────────────────────────────────────────
-
-let debounceTimer;
-
-function initSpotifyUI() {
+document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("spotify-search-input");
 
   input.addEventListener("input", () => {
-    clearTimeout(debounceTimer);
+    clearTimeout(debounce);
+
     const q = input.value.trim();
+    if (!q) return;
 
-    if (!q) {
-      document.getElementById("spotify-results").innerHTML = "";
-      return;
-    }
-
-    document.getElementById("spotify-results").innerHTML =
-      `<div class="sp-loading">Buscando...</div>`;
-
-    debounceTimer = setTimeout(async () => {
-      try {
-        const tracks = await searchSpotify(q);
-        renderSpotifyResults(tracks);
-      } catch (err) {
-        document.getElementById("spotify-results").innerHTML =
-          `<div class="sp-empty">Erro: ${err.message}</div>`;
-      }
+    debounce = setTimeout(async () => {
+      const tracks = await searchSpotify(q);
+      renderSpotifyResults(tracks);
     }, 500);
   });
-
-  document.addEventListener("click", e => {
-    const panel  = document.getElementById("spotify-panel");
-    const button = document.getElementById("spotify-toggle-btn");
-
-    if (!panel.contains(e.target) && e.target !== button) {
-      toggleSpotifyPanel(false);
-    }
-  });
-}
-
-// ─── INIT ────────────────────────────────────────────────────────────────────
-
-document.addEventListener("DOMContentLoaded", () => {
-  getTokenFromUrl();
-  initSpotifyUI();
 });
