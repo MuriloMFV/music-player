@@ -1,40 +1,66 @@
 // =============================================
-// SPOTIFY INTEGRATION — Preview de 30s
+// SPOTIFY INTEGRATION — Preview de 30s (FRONT ONLY)
 // =============================================
-// 1. Crie um app em https://developer.spotify.com/dashboard
-// 2. Copie seu Client ID e Client Secret abaixo
-// 3. Adicione <script src="spotify.js"></script> no seu HTML (antes do </body>)
+// ⚠️ IMPORTANTE:
+// 1. Crie um app em: https://developer.spotify.com/dashboard
+// 2. Coloque seu CLIENT ID abaixo
+// 3. Configure o Redirect URI no Spotify (EX: http://localhost:5500)
+// =============================================
 
+// 🔑 CONFIG
+const SPOTIFY_CLIENT_ID = "378c79139eea40a8b583fffc7ae1dec1";
+const REDIRECT_URI = window.location.origin + window.location.pathname;
 
-
+// 🔐 TOKEN
 let spotifyToken = null;
 let tokenExpiry  = 0;
 
-// ─── Autenticação (Client Credentials) ───────────────────────────────────────
+// ─── LOGIN SPOTIFY ───────────────────────────────────────────────────────────
+
+function loginSpotify() {
+  const scopes = ""; // não precisa de permissões
+
+  const url = `https://accounts.spotify.com/authorize?` +
+    `client_id=${SPOTIFY_CLIENT_ID}` +
+    `&response_type=token` +
+    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
+    `&scope=${scopes}`;
+
+  window.location.href = url;
+}
+
+// ─── CAPTURA TOKEN DA URL ────────────────────────────────────────────────────
+
+function getTokenFromUrl() {
+  const hash = window.location.hash.substring(1);
+  const params = new URLSearchParams(hash);
+
+  const accessToken = params.get("access_token");
+  const expiresIn   = params.get("expires_in");
+
+  if (accessToken) {
+    spotifyToken = accessToken;
+    tokenExpiry  = Date.now() + expiresIn * 1000;
+
+    // limpa URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+}
+
+// ─── GERENCIA TOKEN ──────────────────────────────────────────────────────────
 
 async function getSpotifyToken() {
   if (spotifyToken && Date.now() < tokenExpiry) return spotifyToken;
 
-  const credentials = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
+  getTokenFromUrl();
 
-  const res = await fetch("https://accounts.spotify.com/api/token", {
-    method: "POST",
-    headers: {
-      "Authorization": `Basic ${credentials}`,
-      "Content-Type":  "application/x-www-form-urlencoded",
-    },
-    body: "grant_type=client_credentials",
-  });
+  if (spotifyToken) return spotifyToken;
 
-  if (!res.ok) throw new Error("Falha ao obter token do Spotify");
-
-  const data = await res.json();
-  spotifyToken = data.access_token;
-  tokenExpiry  = Date.now() + data.expires_in * 1000 - 60000; // renova 1 min antes
-  return spotifyToken;
+  // se não tiver token → login
+  loginSpotify();
 }
 
-// ─── Busca de músicas ─────────────────────────────────────────────────────────
+// ─── BUSCA DE MÚSICAS ─────────────────────────────────────────────────────────
 
 async function searchSpotify(query) {
   const token = await getSpotifyToken();
@@ -50,7 +76,7 @@ async function searchSpotify(query) {
   return data.tracks.items;
 }
 
-// ─── UI: renderiza resultados ─────────────────────────────────────────────────
+// ─── UI: RESULTADOS ──────────────────────────────────────────────────────────
 
 function renderSpotifyResults(tracks) {
   const container = document.getElementById("spotify-results");
@@ -91,46 +117,39 @@ function renderSpotifyResults(tracks) {
   });
 }
 
-// ─── Carrega preview no player principal ──────────────────────────────────────
+// ─── PLAYER ──────────────────────────────────────────────────────────────────
 
 function loadSpotifyPreview(track, albumArt) {
   const artists = track.artists.map(a => a.name).join(", ");
 
-  // Reutiliza os elementos do player existente
   const audio   = document.getElementById("audio");
   const display = document.getElementById("display");
   const cover   = document.getElementById("cover").querySelector("img");
   const bgImg   = document.getElementById("bg-img");
   const cdHover = document.getElementById("cd-hover");
 
-  // Atualiza áudio
   audio.src = track.preview_url;
   audio.play();
 
-  // Atualiza display
   display.textContent = `${artists} — ${track.name} (prévia Spotify)`;
 
-  // Troca capa com fade
   cover.style.opacity = 0;
   bgImg.style.opacity = 0;
 
   setTimeout(() => {
     cover.src = albumArt;
-    bgImg.src = albumArt; // usa a capa como background também
+    bgImg.src = albumArt;
     cdHover.src = albumArt;
 
     cover.onload = () => cover.style.opacity = 1;
     bgImg.onload = () => bgImg.style.opacity  = 1;
   }, 400);
 
-  // Desmarca item ativo da playlist local
   document.querySelectorAll(".track").forEach(el => el.classList.remove("active"));
-
-  // Fecha o painel de busca
   toggleSpotifyPanel(false);
 }
 
-// ─── Toggle do painel ─────────────────────────────────────────────────────────
+// ─── PAINEL ──────────────────────────────────────────────────────────────────
 
 function toggleSpotifyPanel(force) {
   const panel = document.getElementById("spotify-panel");
@@ -147,7 +166,7 @@ function toggleSpotifyPanel(force) {
   }
 }
 
-// ─── Evento de busca com debounce ─────────────────────────────────────────────
+// ─── BUSCA (DEBOUNCE) ────────────────────────────────────────────────────────
 
 let debounceTimer;
 
@@ -164,7 +183,7 @@ function initSpotifyUI() {
     }
 
     document.getElementById("spotify-results").innerHTML =
-      `<div class="sp-loading">Buscando<span class="sp-dots">...</span></div>`;
+      `<div class="sp-loading">Buscando...</div>`;
 
     debounceTimer = setTimeout(async () => {
       try {
@@ -177,16 +196,19 @@ function initSpotifyUI() {
     }, 500);
   });
 
-  // Fechar ao clicar fora
   document.addEventListener("click", e => {
     const panel  = document.getElementById("spotify-panel");
     const button = document.getElementById("spotify-toggle-btn");
+
     if (!panel.contains(e.target) && e.target !== button) {
       toggleSpotifyPanel(false);
     }
   });
 }
 
-// ─── Init ─────────────────────────────────────────────────────────────────────
+// ─── INIT ────────────────────────────────────────────────────────────────────
 
-document.addEventListener("DOMContentLoaded", initSpotifyUI);
+document.addEventListener("DOMContentLoaded", () => {
+  getTokenFromUrl();
+  initSpotifyUI();
+});
