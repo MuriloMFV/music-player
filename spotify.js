@@ -170,3 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500);
   });
 });
+
+function toggleSpotifyPanel() {
+  const panel = document.getElementById("spotify-panel");
+  panel.classList.toggle("sp-open");
+}
