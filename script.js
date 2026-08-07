@@ -180,6 +180,7 @@ const bgImg = document.getElementById("bg-img");
 let currentTrack = 0;
 
 function loadTrack(index) {
+  window.spotifyPreviewActive = false;
   audio.src = tracks[index].src;
   display.textContent = tracks[index].name;
 
@@ -232,6 +233,12 @@ audio.addEventListener("timeupdate", () => {
 });
 
 audio.addEventListener("ended", () => {
+  if (window.spotifyPreviewActive) {
+    window.spotifyPreviewActive = false;
+    progress.style.width = "0%";
+    currentTimeEl.textContent = "0:00";
+    return;
+  }
   nextTrack();
 });
 
