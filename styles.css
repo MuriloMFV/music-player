@@ -2,21 +2,26 @@
 
 body {
   font-family: "Stack Sans Text", sans-serif;
-  background: #111;
+  background: linear-gradient(135deg, #1a1f29, #2c3443);
   color: rgb(228, 238, 228);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
-  
-  
+  margin: 0;
+}
+
+.container {
+  width: min(392px, calc(100vw - 28px));
+  margin: 0 auto;
 }
 
 .player {
   background: rgba(34, 34, 34, 0.7); /* vidro escuro */
   backdrop-filter: blur(10px);       /* efeito vidro */
-  width: 350px;
+  width: 100%;
+  box-sizing: border-box;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
@@ -24,7 +29,7 @@ body {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease forwards;
-  margin-left: 67px;
+  margin: 0;
 }
 
 @keyframes fadeInUp {
@@ -122,11 +127,58 @@ body {
   background: rgba(255,255,255,0.05);
 }
 
+.now-playing-heading {
+  min-height: 22px;
+  margin: 0 2px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.player-source {
+  flex: 0 0 auto;
+  padding: 4px 8px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  color: rgba(255,255,255,.65);
+  background: rgba(255,255,255,.08);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.player-source.spotify {
+  border-color: rgba(29,185,84,.42);
+  color: #8ce9ac;
+  background: rgba(29,185,84,.13);
+}
+
+.playback-message {
+  min-width: 0;
+  overflow: hidden;
+  color: rgba(255,255,255,.5);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playback-message.error { color: #ffc0c0; }
+
+.player.is-playing .playback-message:not(.error) { color: rgba(174, 245, 206, .72); }
+
+.player.spotify-active .progress {
+  background: linear-gradient(90deg, #1ed760, #1db954);
+}
+
+.player.spotify-active .cover { cursor: default; }
+
 .controls {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 15px 0 20px 0;
+  margin: 15px 0 10px;
 }
 
 button {
@@ -165,7 +217,11 @@ button:active {
     0 0 4px rgba(255,255,255,0.7);
 }
 
-#play {
+button:disabled {
+  pointer-events: none;
+}
+
+.play-toggle {
   width: 52px;
   height: 52px;
   font-size: 18px;
@@ -176,12 +232,83 @@ button:active {
     inset 2px 2px 6px rgba(255,255,255,0.3);
 }
 
-#play:hover {
+.play-toggle:hover {
   background: linear-gradient(145deg, rgba(255,255,255,0.6), rgba(230,230,230,0.15));
   box-shadow: 
     0 0 25px rgba(255,255,255,0.7),
     inset 2px 2px 8px rgba(255,255,255,0.4);
   color: #000;
+}
+
+.play-toggle.loading {
+  cursor: wait;
+  animation: control-pulse 1s ease-in-out infinite;
+}
+
+@keyframes control-pulse {
+  50% { opacity: .55; }
+}
+
+.volume-control {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 34px;
+  align-items: center;
+  gap: 9px;
+  margin: 0 4px 14px;
+}
+
+.volume-button {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 13px;
+}
+
+.volume-button:hover {
+  transform: none;
+  background: rgba(255,255,255,.08);
+  box-shadow: none;
+}
+
+#volume {
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  appearance: none;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgba(255,255,255,.78) var(--volume), rgba(255,255,255,.16) var(--volume));
+}
+
+#volume::-webkit-slider-thumb {
+  width: 13px;
+  height: 13px;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 50%;
+  background: #e8ece9;
+  box-shadow: 0 2px 8px rgba(0,0,0,.45);
+}
+
+#volume::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 50%;
+  background: #e8ece9;
+  box-shadow: 0 2px 8px rgba(0,0,0,.45);
+}
+
+#volume:focus-visible { box-shadow: 0 0 0 3px rgba(255,255,255,.18); }
+
+#volume-value {
+  color: rgba(255,255,255,.48);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
 }
 
 
@@ -253,28 +380,14 @@ button:active {
 }
 
 
-/* Fundo suave e limpo */
-body {
-  background: linear-gradient(135deg, #1a1f29, #2c3443);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Stack Sans Text", sans-serif;
-  margin: 0;
-}
-
-
-
-
-
 /* Container centralizado */
 .search-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
-  
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32px 0 24px;
 }
 
 /* Barra de pesquisa estilo vidro líquido */
@@ -282,7 +395,8 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 400px;
+  width: 100%;
+  box-sizing: border-box;
   height: 52px;
   padding: 0 18px;
   border-radius: 40px;
@@ -450,12 +564,8 @@ body {
 
 
 /* ===== Busca integrada: Biblioteca / Spotify ===== */
-.search-container {
-  padding: 32px 20px 24px;
-}
-
 .search-shell {
-  width: 438px;
+  width: 100%;
   position: relative;
 }
 
@@ -502,11 +612,6 @@ body {
   opacity: .88;
 }
 
-.search-bar {
-  width: auto;
-  box-sizing: border-box;
-}
-
 .search-icon {
   font-size: 21px;
   line-height: 1;
@@ -526,25 +631,94 @@ body {
 }
 
 .spotify-search-area {
-  position: absolute;
-  z-index: 12;
-  top: calc(100% + 10px);
-  left: 0;
-  right: 0;
+  position: relative;
   padding: 8px;
-  max-height: 328px;
+  height: 210px;
   overflow-y: auto;
-  border-radius: 20px;
+  border-radius: 12px;
   border: 1px solid rgba(255,255,255,.16);
   background: rgba(24, 27, 34, .82);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
-  box-shadow: 0 18px 45px rgba(0,0,0,.38), inset 0 1px rgba(255,255,255,.08);
+  box-shadow: inset 0 1px rgba(255,255,255,.08);
   scrollbar-width: none;
 }
 
 .spotify-search-area[hidden] { display: none; }
+.playlist[hidden] { display: none; }
 .spotify-search-area::-webkit-scrollbar { display: none; }
+
+.spotify-account {
+  position: sticky;
+  z-index: 2;
+  top: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: -8px -8px 4px;
+  padding: 9px 10px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  background: rgba(25, 28, 34, .94);
+  backdrop-filter: blur(18px);
+}
+
+.spotify-account[hidden] { display: none; }
+
+.sp-user {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sp-user img,
+.sp-user-placeholder {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(29,185,84,.18);
+}
+
+.sp-user > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-user strong {
+  overflow: hidden;
+  color: rgba(255,255,255,.88);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sp-plan { color: rgba(255,255,255,.42); font-size: 9px; }
+.sp-plan.premium { color: #75dda0; }
+
+.sp-disconnect-btn {
+  width: auto;
+  height: 25px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(255,255,255,.5);
+  font: inherit;
+  font-size: 9px;
+}
+
+.sp-disconnect-btn:hover {
+  transform: none;
+  background: rgba(255,255,255,.09);
+  box-shadow: none;
+  color: #fff;
+}
 
 .sp-connect-card {
   display: flex;
@@ -656,14 +830,39 @@ body {
   cursor: default;
 }
 
+.sp-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.sp-open-link {
+  color: rgba(255,255,255,.45);
+  font-size: 9px;
+  text-decoration: none;
+}
+
+.sp-open-link:hover { color: #fff; }
+
 @media (max-width: 620px) {
   body { overflow: auto; align-items: flex-start; }
-  .container { width: 100%; }
-  .search-shell { width: min(438px, calc(100vw - 28px)); }
-  .search-container { padding: 22px 14px 18px; }
-  .player { width: min(350px, calc(100vw - 68px)); margin: 0 auto 30px; }
-  .spotify-search-area { max-height: 280px; }
+  .search-container { padding: 22px 0 18px; }
+  .player { margin-bottom: 30px; }
+  .spotify-search-area { height: 210px; }
   .sp-track { grid-template-columns: 44px minmax(0, 1fr) auto; gap: 9px; }
   .sp-art { width: 44px; height: 44px; }
   .sp-play-btn { min-width: 58px; padding: 0 9px; }
+}
+
+@media (max-height: 820px) {
+  body {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+
+  .search-container { padding-top: 18px; }
+  .player { margin-bottom: 24px; }
 }

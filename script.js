@@ -1,171 +1,4 @@
-const tracks = [
-  { 
-    name: "Australian Crawl - No Not You Again (1981)", 
-    album: "Sons of Beaches",
-    src: "./tracks/Australian Crawl - Oh No Not You Again.mp3", 
-    cover: "./covers/australian.jpg",
-    disk: "./disks/cdplaceholder.png",
-    background: "./background/fundo (1).jpg"
-  },
-  
-  {
-    name: "Black Eyed Peas - Meet Me Halfway (2009)",
-    album: "The E.N.D.",
-    src: "./tracks/Meet Me Halfway - Black Eyed Peas.mp3",
-    cover: "./covers/Cover of Meet Me Halfway by Black Eyed Peas.jpg",
-    disk: "./disks/black.jpg",
-    background: "./background/undefined - Imgur.gif"
-  },
-  {
-    name: "Bob Marley - Could You Be Loved (1980)",
-    album: "Uprising",
-    src: "./tracks/Could You Be Loved.mp3",
-    cover: "./covers/bobmarley.jpg",
-    disk: "./disks/bobmarley.jpg",
-    background: "./background/fundo(4).jpg"
-  },
-  {
-    name: "MF DOOM feat. Mr. Fantastik - Rapp Snitch Knishes (2004)",
-    album: "Mm..Food",
-    src: "./tracks/Rapp Snitch Knishes - MF DOOM (youtube).mp3",
-    cover: "./covers/mfdoom.jpg",
-    disk: "./disks/mfdoom.jpg",
-    background: "./background/fundo(5).jpg"
-  },
-  {
-    name: "Daft Punk (feat. Pharrell Williams and Nile Rodgers) - Get Lucky (2014)",
-    album: "Random Access Memories",
-    src: "./tracks/Get Lucky (feat. Pharrell Williams and Nile Rodgers) - Daft Punk.mp3",
-    cover: "./covers/daftpunk.jpg",
-    disk: "./disks/daftpunk.jpg",
-    background: "./background/undefined - Imgur(2).gif"
-  
-  },
-  {
-    name: "Zé Ramalho - Chão de Giz (1977)",
-    album: "Zé Ramalho",
-    src: "./tracks/CHAO DE GIZ.mp3",
-    cover: "./covers/zeramalho.jpg",
-    disk: "./disks/zéramalho.jpg",
-    background: "./background/fundo(6).jpg"
-  },
-  {
-    name: "The Cranberries - Linger (1993)",
-    album: "Everybody Else Is Doing It, So Why Can't We?",
-    src: "./tracks/Cranberries - Linger .mp3",
-    cover: "./covers/thecranrries.jpg",
-    disk: "./disks/thecranberries.jpg",
-    background: "./background/fundo(7).webp"
-  },
-  {
-    name: "No Doubt - Just a Girl (1995)",
-    album: "Tragic Kingdom",
-    src: "./tracks/Just A Girl - No Doubt.mp3",
-    cover: "./covers/nodoubt.jpg",
-    disk: "./disks/nodoubt.jpg",
-    background: "./background/fundo(8).jpg"
-  },
-  {
-    name: "Sade - Kiss of Life (1988) ",
-    album: "Love Deluxe",
-    src: "./tracks/Kiss of Life - Sade.mp3",
-    cover: "./covers/sade.jpg",
-    disk: "./disks/sade.jpg",
-    background: "./background/fundo(10).jpeg"
-  },
-  {
-    name: "MGMT - Kids (2005)",
-    album: "Oracular Spectacular",
-    src: "./tracks/Kids - MGMT.mp3",
-    cover: "./covers/mgmt.jpg",
-    disk: "./disks/mgmt.jpg",
-    background: "./background/undefined - Imgur(3).gif"
-  
-  },
-  { 
-    name: "Cidade Negra - Luta De Classes (1994)", 
-    album: "Sobre Todas as Forças",
-    src: "./tracks/Luta De Classes.mp3", 
-    cover: "./covers/cidadenegra.jpg",
-    disk: "./disks/cidadenegra.jpg",
-    background: "./background/fundo (2).jpg"
-  },
-  {
-    name: "Joy Division - Disorder (1979)",
-    album: "Unknown Pleasures",
-    src: "./tracks/Joy Division.mp3", 
-    cover: "./covers/joydivision.jpg",
-    disk: "./disks/joydivision.jpg",
-    background: "./background/undefined - Imgur(5).gif"
-  },
-  {
-    name: "Ziggy Marley and the Melody Makers - Tomorrow People (1988)",
-    album: "Conscious Party",
-    src: "./tracks/Tomorrow People.mp3", 
-    cover: "./covers/ziggy.jpg",
-    disk: "./disks/ziggymarley.jpg",
-    background: "./background/undefined - Imgur(4).gif"
-  },
-  { 
-    name: "Bread - Everything I Own (1972)", 
-    album: "Baby I'm-a Want You",
-    src: "./tracks/Track 03.mp3", 
-    cover: "./covers/bread.jpg",
-    disk: "./disks/bread.jpg",
-    background: "./background/fundo (3).jpg"
-  },
-  {
-    name: "Chico Science - Da Lama ao Caos (1994)",
-    album: "Da Lama ao Caos",
-    src: "./tracks/Da Lama ao Caos - Chico Science.mp3", 
-    cover: "./covers/chico.jpg",
-    disk: "./disks/chico.jpg",
-    background: "./background/fundo (10).jpg"
-  },
-  {
-    name: "Ween - Ocean Man (1997)",
-    album: "The Mollusk",
-    src: "./tracks/Ocean Man - Ween.mp3", 
-    cover: "./covers/ocean.jpg",
-    disk: "./disks/ween.jpg",
-    background: "./background/undefined - Imgur(7).gif"
-  },
-  {
-    name: "Sublime - Santeria (1996)",
-    album: "Sublime",
-    src: "./tracks/Santeria - Sublime.mp3", 
-    cover: "./covers/sublime.jpg",
-    disk: "./disks/sublime.jpg",
-    background: "./background/fundo(11).jpg"
-  },
-  {
-    name: "Simple Minds - Mandela Day (1989) ",
-    album: "Street Fighting Years",
-    src: "./tracks/Simple Minds.mp3", 
-    cover: "./covers/mandela.jpg",
-    disk: "./disks/simpleminds.jpg",
-    background: "./background/fundo(9).jpg"
-  },
-  {
-    name: "David Bowie - Starman (1973)",
-    album: "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
-    src: "./tracks/David Bowie.mp3", 
-    cover: "./covers/bowie.jpg",
-    disk: "./disks/bowie.webp",
-    background: "./background/undefined - Imgur(6).gif"
-  },
-  {
-    name: "Engenheiros de Hawaii - Infinita Highway (1987)",
-    album: "Longe Demais das Capitais",
-    src: "./tracks/Infinita Highway - Engenheiros Do Hawaii.mp3", 
-    cover: "./covers/engenheiros.jpg",
-    disk: "./disks/cdplaceholder.png",
-    background: "./background/undefined - Imgur(8).gif"
-  }
-
-  
- 
-];
+const tracks = window.musicLibrary;
 
 const audio = document.getElementById("audio");
 const display = document.getElementById("display");
@@ -176,95 +9,257 @@ const progress = document.getElementById("progress");
 const currentTimeEl = document.getElementById("current-time");
 const durationEl = document.getElementById("duration");
 const bgImg = document.getElementById("bg-img");
+const sourceEl = document.getElementById("player-source");
+const playbackMessageEl = document.getElementById("playback-message");
+const playToggle = document.getElementById("play-toggle");
+const muteToggle = document.getElementById("mute-toggle");
+const volumeInput = document.getElementById("volume");
+const volumeValue = document.getElementById("volume-value");
+const playerEl = document.querySelector(".player");
+const PLAYER_STATE_KEY = "music_player_local_state";
 
-let currentTrack = 0;
+function readPlayerState() {
+  try {
+    return JSON.parse(localStorage.getItem(PLAYER_STATE_KEY) || "null") || {};
+  } catch {
+    return {};
+  }
+}
 
-function loadTrack(index) {
-  window.spotifyPreviewActive = false;
-  audio.src = tracks[index].src;
-  display.textContent = tracks[index].name;
+const savedPlayerState = readPlayerState();
 
-  // fade transition
+let currentTrack = Math.min(Math.max(Number(savedPlayerState.trackIndex) || 0, 0), tracks.length - 1);
+let source = "local";
+let spotifyAdapter = null;
+let artworkTimer = null;
+let playbackVersion = 0;
+let isPlaying = false;
+let isLoading = false;
+let pendingLocalPosition = Number(savedPlayerState.position) || 0;
+let lastSavedSecond = -1;
+let volume = Number.isFinite(Number(savedPlayerState.volume)) ? Number(savedPlayerState.volume) : 0.8;
+let volumeBeforeMute = volume || 0.8;
+
+function setArtwork({ cover: coverSrc, background, disk }) {
+  clearTimeout(artworkTimer);
   bgImg.style.opacity = 0;
   cover.style.opacity = 0;
 
-  setTimeout(() => {
-    bgImg.src = tracks[index].background;
-    cover.src = tracks[index].cover;
-    document.getElementById("cd-hover").src = tracks[index].disk;
+  artworkTimer = setTimeout(() => {
+    if (background) bgImg.src = background;
+    if (coverSrc) cover.src = coverSrc;
+    if (disk) document.getElementById("cd-hover").src = disk;
+    bgImg.style.opacity = 1;
+    cover.style.opacity = 1;
+  }, 250);
+}
 
-    bgImg.onload = () => bgImg.style.opacity = 1;
-    cover.onload = () => cover.style.opacity = 1;
-  }, 400);
+function setPlaybackMessage(message = "", isError = false) {
+  playbackMessageEl.textContent = message;
+  playbackMessageEl.classList.toggle("error", isError);
+}
+
+function handlePlaybackFailure(error) {
+  const message = error?.message || "Não foi possível iniciar a reprodução.";
+  updatePlayToggle(true);
+  setPlaybackMessage(message, true);
+}
+
+function updatePlayToggle(paused = true, loading = false) {
+  isPlaying = !paused;
+  isLoading = loading;
+  playToggle.textContent = loading ? "…" : paused ? "▶" : "⏸";
+  playToggle.setAttribute("aria-label", loading ? "Carregando música" : paused ? "Reproduzir" : "Pausar");
+  playToggle.setAttribute("aria-pressed", String(!paused));
+  playToggle.classList.toggle("loading", loading);
+  playerEl.classList.toggle("is-playing", !paused && !loading);
+}
+
+function savePlayerState() {
+  localStorage.setItem(PLAYER_STATE_KEY, JSON.stringify({
+    trackIndex: currentTrack,
+    position: source === "local" && Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+    volume
+  }));
+}
+
+function renderVolume() {
+  const percent = Math.round(volume * 100);
+  volumeInput.value = String(volume);
+  volumeValue.textContent = `${percent}%`;
+  muteToggle.textContent = volume === 0 ? "🔇" : volume < 0.5 ? "🔉" : "🔊";
+  muteToggle.setAttribute("aria-label", volume === 0 ? "Restaurar volume" : "Silenciar");
+  volumeInput.style.setProperty("--volume", `${percent}%`);
+}
+
+function setVolume(nextVolume, persist = true) {
+  volume = Math.min(1, Math.max(0, Number(nextVolume) || 0));
+  audio.volume = volume;
+  if (volume > 0) volumeBeforeMute = volume;
+  spotifyAdapter?.setVolume(volume).catch(() => {});
+  renderVolume();
+  if (persist) savePlayerState();
+}
+
+async function activateLocalPlayer() {
+  playbackVersion += 1;
+  if (source === "spotify" && spotifyAdapter) {
+    await spotifyAdapter.pause().catch(() => {});
+  }
+  source = "local";
+  sourceEl.textContent = "Biblioteca";
+  sourceEl.classList.remove("spotify");
+  playerEl.classList.remove("spotify-active");
+  updatePlayToggle(true);
+  setPlaybackMessage("");
+}
+
+async function loadTrack(index, autoplay = false) {
+  await activateLocalPlayer();
+  currentTrack = index;
+  audio.src = tracks[index].src;
+  display.textContent = tracks[index].name;
+  setArtwork(tracks[index]);
 
   document.querySelectorAll(".track").forEach(el => el.classList.remove("active"));
-  document.querySelectorAll(".track")[index].classList.add("active");
+  document.querySelectorAll(".track")[index]?.classList.add("active");
+  progress.style.width = "0%";
+  currentTimeEl.textContent = "0:00";
+  durationEl.textContent = "0:00";
+  savePlayerState();
+  if (autoplay) await audio.play();
 }
 
 function playTrack() {
-  audio.play();
+  if (source === "spotify" && spotifyAdapter) {
+    spotifyAdapter.resume().catch(error => setPlaybackMessage(error.message, true));
+    return;
+  }
+  audio.play().catch(() => handlePlaybackFailure(new Error("O navegador bloqueou a reprodução.")));
 }
 
 function pauseTrack() {
+  if (source === "spotify" && spotifyAdapter) {
+    spotifyAdapter.pause().catch(error => setPlaybackMessage(error.message, true));
+    return;
+  }
   audio.pause();
 }
 
+function togglePlayback() {
+  if (isLoading) return;
+  if (isPlaying) pauseTrack();
+  else playTrack();
+}
+
 function nextTrack() {
+  if (source === "spotify" && spotifyAdapter) {
+    spotifyAdapter.next().catch(error => setPlaybackMessage(error.message, true));
+    return;
+  }
   currentTrack = (currentTrack + 1) % tracks.length;
-  loadTrack(currentTrack);
-  playTrack();
+  loadTrack(currentTrack, true).catch(handlePlaybackFailure);
 }
 
 function formatTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
   const minutes = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
   return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
 }
 
 audio.addEventListener("timeupdate", () => {
+  if (source !== "local") return;
   const { currentTime, duration } = audio;
-  const progressPercent = (currentTime / duration) * 100;
+  const progressPercent = duration ? (currentTime / duration) * 100 : 0;
   progress.style.width = `${progressPercent}%`;
 
   currentTimeEl.textContent = formatTime(currentTime);
   if (!isNaN(duration)) {
     durationEl.textContent = formatTime(duration);
   }
+  const currentSecond = Math.floor(currentTime);
+  if (currentSecond % 5 === 0 && currentSecond !== lastSavedSecond) {
+    lastSavedSecond = currentSecond;
+    savePlayerState();
+  }
+});
+
+audio.addEventListener("loadstart", () => {
+  if (source !== "local") return;
+  updatePlayToggle(true, true);
+  setPlaybackMessage("Carregando faixa…");
+});
+
+audio.addEventListener("loadedmetadata", () => {
+  if (source !== "local") return;
+  if (pendingLocalPosition > 0 && pendingLocalPosition < audio.duration - 1) {
+    audio.currentTime = pendingLocalPosition;
+  }
+  pendingLocalPosition = 0;
+  durationEl.textContent = formatTime(audio.duration);
+});
+
+audio.addEventListener("canplay", () => {
+  if (source !== "local" || !audio.paused) return;
+  updatePlayToggle(true);
+  setPlaybackMessage("Pronto para tocar");
+});
+
+audio.addEventListener("playing", () => {
+  if (source !== "local") return;
+  updatePlayToggle(false);
+  setPlaybackMessage("Tocando da biblioteca");
+});
+
+audio.addEventListener("pause", () => {
+  if (source !== "local" || audio.ended) return;
+  updatePlayToggle(true);
+  setPlaybackMessage("Pausado");
+  savePlayerState();
+});
+
+audio.addEventListener("waiting", () => {
+  if (source !== "local") return;
+  updatePlayToggle(true, true);
+  setPlaybackMessage("Carregando áudio…");
+});
+
+audio.addEventListener("error", () => {
+  if (source !== "local") return;
+  updatePlayToggle(true);
+  setPlaybackMessage("Não foi possível carregar esta faixa.", true);
 });
 
 audio.addEventListener("ended", () => {
-  if (window.spotifyPreviewActive) {
-    window.spotifyPreviewActive = false;
-    progress.style.width = "0%";
-    currentTimeEl.textContent = "0:00";
-    return;
-  }
   nextTrack();
 });
 
 
 progressContainer.addEventListener("click", (e) => {
   const width = progressContainer.clientWidth;
-  const clickX = e.offsetX;
-  const duration = audio.duration;
-  audio.currentTime = (clickX / width) * duration;
+  const ratio = Math.min(1, Math.max(0, e.offsetX / width));
+  if (source === "spotify" && spotifyAdapter) {
+    spotifyAdapter.seek(ratio).catch(error => setPlaybackMessage(error.message, true));
+    return;
+  }
+  if (Number.isFinite(audio.duration)) audio.currentTime = ratio * audio.duration;
 });
 
-document.getElementById("play").addEventListener("click", playTrack);
-document.getElementById("pause").addEventListener("click", pauseTrack);
+playToggle.addEventListener("click", togglePlayback);
+volumeInput.addEventListener("input", event => setVolume(event.target.value));
+muteToggle.addEventListener("click", () => setVolume(volume === 0 ? volumeBeforeMute : 0));
 
 document.getElementById("prev").addEventListener("click", () => {
+  if (source === "spotify" && spotifyAdapter) {
+    spotifyAdapter.previous().catch(error => setPlaybackMessage(error.message, true));
+    return;
+  }
   currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-  loadTrack(currentTrack);
-  playTrack();
+  loadTrack(currentTrack, true).catch(handlePlaybackFailure);
 });
 
-document.getElementById("next").addEventListener("click", () => {
-  currentTrack = (currentTrack + 1) % tracks.length;
-  loadTrack(currentTrack);
-  playTrack();
-  
-});
+document.getElementById("next").addEventListener("click", nextTrack);
 
 
 
@@ -273,27 +268,16 @@ tracks.forEach((track, index) => {
   div.textContent = track.name;
   div.classList.add("track");
   div.addEventListener("click", () => {
-    currentTrack = index;
-    loadTrack(index);
-    playTrack();
+    loadTrack(index, true).catch(handlePlaybackFailure);
   });
   playlist.appendChild(div);
 });
 
-loadTrack(currentTrack);
+setVolume(volume, false);
+loadTrack(currentTrack).catch(() => {});
+window.addEventListener("pagehide", savePlayerState);
 
 const searchInput = document.getElementById("search");
-
-searchInput.addEventListener("input", () => {
-  const filter = searchInput.value.toLowerCase();
-  const trackElements = document.querySelectorAll(".track");
-
-  trackElements.forEach(trackEl => {
-    const text = trackEl.textContent.toLowerCase();
-    // se o nome da música inclui o texto digitado, mostra; senão, esconde
-    trackEl.style.display = text.includes(filter) ? "block" : "none";
-  });
-});
 
 const noResults = document.createElement("div");
 noResults.textContent = "Nenhuma música encontrada";
@@ -302,6 +286,7 @@ noResults.classList.add("no-results");
 playlist.appendChild(noResults);
 
 searchInput.addEventListener("input", () => {
+  if (document.getElementById("spotify-mode-btn").classList.contains("active")) return;
   const filter = searchInput.value.toLowerCase();
   const trackElements = document.querySelectorAll(".track");
   let anyVisible = false;
@@ -315,6 +300,60 @@ searchInput.addEventListener("input", () => {
 
   noResults.style.display = anyVisible ? "none" : "block";
 });
+
+window.musicPlayer = {
+  setSpotifyAdapter(adapter) {
+    spotifyAdapter = adapter;
+    spotifyAdapter.setVolume(volume).catch(() => {});
+  },
+  async activateSpotify(track) {
+    const version = ++playbackVersion;
+    audio.pause();
+    audio.removeAttribute("src");
+    audio.load();
+    source = "spotify";
+    sourceEl.textContent = "Spotify";
+    sourceEl.classList.add("spotify");
+    playerEl.classList.add("spotify-active");
+    document.querySelectorAll(".track.active").forEach(el => el.classList.remove("active"));
+    const artists = track.artists?.map(artist => artist.name).join(", ") || "Spotify";
+    display.textContent = `${artists} — ${track.name}`;
+    const art = track.album?.images?.[0]?.url || "";
+    setArtwork({ cover: art, background: art, disk: art });
+    updatePlayToggle(true, true);
+    setPlaybackMessage("Conectando ao Spotify…");
+    return version;
+  },
+  updateSpotifyState(state) {
+    if (source !== "spotify") return;
+    const track = state.track_window?.current_track;
+    if (track) {
+      const artists = track.artists?.map(artist => artist.name).join(", ") || "Spotify";
+      display.textContent = `${artists} — ${track.name}`;
+    }
+    const duration = state.duration || 0;
+    const position = state.position || 0;
+    progress.style.width = `${duration ? (position / duration) * 100 : 0}%`;
+    currentTimeEl.textContent = formatTime(position / 1000);
+    durationEl.textContent = formatTime(duration / 1000);
+    updatePlayToggle(state.paused, false);
+    setPlaybackMessage(state.paused ? "Pausado" : "Tocando via Spotify");
+  },
+  setPlaybackMessage,
+  reportPlaybackError(message) {
+    handlePlaybackFailure(new Error(message));
+  },
+  isSpotifyActive() {
+    return source === "spotify";
+  },
+  isCurrentSpotifySession(version) {
+    return source === "spotify" && playbackVersion === version;
+  },
+  async returnToLocal() {
+    pendingLocalPosition = 0;
+    await loadTrack(currentTrack, false);
+  }
+};
 
 
 // MODAL DO CD
@@ -351,6 +390,7 @@ const curiosidades = {
 
 // abre modal ao clicar na capa
 document.getElementById("cover").addEventListener("click", () => {
+  if (window.musicPlayer?.isSpotifyActive()) return;
   const track = tracks[currentTrack];
   modal.classList.add("show");
 
